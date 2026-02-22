@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --terminal-bg: #050505;
+  --terminal-border: #333333;
+  --terminal-accent: #00ff9d;
+  --terminal-text: #e5e5e5;
+  --terminal-dim: #666666;
+}
+
+body {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+}
+
+.terminal-card {
+  background-color: #0a0a0a;
+  border: 1px solid var(--terminal-border);
+  box-shadow: none;
+}
+
+.terminal-panel {
+  background-color: #0a0a0a;
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.text-terminal-accent {
+  color: var(--terminal-accent);
+}
+
+/* Custom Scrollbar - Blocky Terminal Style */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+  border-left: 1px solid #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border: 1px solid #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-accent);
+}
+
+/* Scanline effect (optional, subtle) */
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.1) 50%,
+    rgba(0,0,0,0.1)
+  );
+  background-size: 100% 4px;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  opacity: 0.15;
+}
