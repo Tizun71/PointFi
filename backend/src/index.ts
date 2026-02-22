@@ -16,14 +16,14 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
   customSiteTitle: 'PointFi API Documentation',
 }));
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
+app.use((_req: Request, _res: Response, next: NextFunction) => {
+  console.log(`[${new Date().toISOString()}] ${_req.method} ${_req.path}`);
   next();
 });
 
 app.use('/', creditRoutes);
 
-app.use((req: Request, res: Response) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({
     error: 'Endpoint not found',
     availableEndpoints: [
@@ -33,7 +33,7 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Server error:', err);
   res.status(500).json({
     error: 'Internal server error',

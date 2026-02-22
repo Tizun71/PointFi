@@ -54,7 +54,7 @@ const usedNonces = new Set<string>();
  *                         type: string
  *                       example: ["onchain", "nft-reputation"]
  */
-router.get('/health', (req: Request, res: Response<HealthCheckResponse>) => {
+router.get('/health', (_req: Request, res: Response<HealthCheckResponse>) => {
   res.json({
     status: 'healthy',
     timestamp: Date.now(),

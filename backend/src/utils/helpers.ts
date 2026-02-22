@@ -8,6 +8,6 @@ export function getTodayDate(): string {
   return new Date().toISOString().split('T')[0];
 }
 
-export function addVariance(value: number, percentage: number = 0.05): number {
+export function addVariance(_value: number, percentage: number = 0.05): number {
   return 1 + (Math.random() - 0.5) * percentage;
 }

@@ -65,7 +65,7 @@ async function fetchFromAlchemy(walletAddress: string): Promise<NFTPortfolioResp
 
   return {
     total: response.data.totalCount || 0,
-    collections: response.data.ownedNfts?.map((nft: any) => ({
+    collections: response.data.ownedNfts?.map(() => ({
       floorPrice: 0,
       verified: false
     })) || []
@@ -84,7 +84,7 @@ async function fetchFromMoralis(walletAddress: string): Promise<NFTPortfolioResp
 
   return {
     total: response.data.total || 0,
-    collections: response.data.result?.map((nft: any) => ({
+    collections: response.data.result?.map(() => ({
       floorPrice: 0,
       verified: false
     })) || []

@@ -8,10 +8,6 @@ interface EtherscanTransaction {
   from: string;
 }
 
-interface EtherscanResponse {
-  result: EtherscanTransaction[];
-}
-
 export async function fetchFromOnChain(walletAddress: string): Promise<CreditData> {
   try {
     const metrics = await analyzeWalletOnChain(walletAddress);
