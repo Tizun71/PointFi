@@ -1,0 +1,41 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.20"
+optimizer = true
+optimizer_runs = 200
+verbosity = 3
+fs_permissions = [
+  { access = "read", path = "../chainlink-functions/" },
+  { access = "read", path = "./cre/" },
+  { access = "write", path = "./" }
+]
+ignored_error_codes = [5159, 2394]
+
+# Ignore problematic Chainlink contracts we don't need
+exclude = [
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/dev/**",
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/llo-feeds/**",
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/vrf/**",
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/automation/**",
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/l2ep/**",
+    "lib/chainlink-brownie-contracts/contracts/src/v0.8/tests/**",
+]
+
+remappings = [
+    "@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts/contracts/",
+    "forge-std/=lib/forge-std/src/"
+]
+
+# Etherscan API key for contract verification
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
+
+# RPC endpoints
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
